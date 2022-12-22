@@ -1,4 +1,3 @@
-import 'package:spend_time/config/config.dart';
 import 'package:spend_time/database/database.dart';
 import 'package:spend_time/screen/list/list.dart';
 

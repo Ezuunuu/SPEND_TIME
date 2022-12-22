@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 ///-
 import 'package:spend_time/config/config.dart';
-import 'package:spend_time/screen/list/list.dart';
 
 class StopwatchBoxItemView extends StatelessWidget {
   const StopwatchBoxItemView(
