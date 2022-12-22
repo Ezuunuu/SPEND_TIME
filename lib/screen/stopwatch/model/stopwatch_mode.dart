@@ -1,0 +1,4 @@
+enum StopwatchMode {
+  stopwatch,
+  timer,
+}

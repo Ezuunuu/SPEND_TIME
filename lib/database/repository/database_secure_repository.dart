@@ -1,0 +1,29 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class DatabaseSecureRepository {
+  FlutterSecureStorage storage = const FlutterSecureStorage();
+
+  Future<void> init() async {
+    storage = const FlutterSecureStorage();
+  }
+
+  Future<String?> read({required String key}) async {
+    return await storage.read(key: key);
+  }
+
+  Future<Map<String, String>> readAll() async {
+    return await storage.readAll();
+  }
+
+  Future<void> delete({required String key}) async {
+    return await storage.delete(key: key);
+  }
+
+  Future<void> deleteAll() async {
+    return await storage.deleteAll();
+  }
+
+  Future<void> write({required String key, required String value}) async {
+    return await storage.write(key: key, value: value);
+  }
+}
