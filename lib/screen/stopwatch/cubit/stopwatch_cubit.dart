@@ -158,7 +158,6 @@ class StopwatchCubit extends Cubit<StopwatchState> {
     emit(state.copyWith(status: StopwatchStatus.complete));
     await stopwatchRepository.saveDelete();
     /// TODO: category index가 필요해보임
-    await listRepository.save(state.category);
     await initial();
     await dispose();
   }

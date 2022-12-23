@@ -33,7 +33,7 @@ class ListCubit extends Cubit<ListState> {
         return;
       }
     }
-    final CategoryModel category = CategoryModel(title: state.currentCategoryName, habit: List.empty(growable: true));
+    final CategoryModel category = CategoryModel(index: state.category.length, title: state.currentCategoryName, habit: List.empty(growable: true));
     final list = state.category;
     list.add(category);
     await listRepository.save(list);

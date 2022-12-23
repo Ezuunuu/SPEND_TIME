@@ -17,21 +17,24 @@ class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CategoryModel(
-      title: fields[0] as String?,
-      habit: (fields[1] as List).cast<HabitModel>(),
-      lastHabitIndex: fields[2] as int?,
+      index: fields[0] as int,
+      title: fields[1] as String?,
+      habit: (fields[2] as List).cast<HabitModel>(),
+      lastHabitIndex: fields[3] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CategoryModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.index)
       ..writeByte(1)
-      ..write(obj.habit)
+      ..write(obj.title)
       ..writeByte(2)
+      ..write(obj.habit)
+      ..writeByte(3)
       ..write(obj.lastHabitIndex);
   }
 

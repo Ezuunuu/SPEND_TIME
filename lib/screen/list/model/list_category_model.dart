@@ -6,15 +6,18 @@ part 'list_category_model.g.dart';
 
 @HiveType(typeId: 7)
 class CategoryModel {
-  CategoryModel({this.title, required this.habit, this.lastHabitIndex});
+  CategoryModel({this.index = -1, this.title, required this.habit, this.lastHabitIndex});
   @HiveField(0)
-  final String? title;
+  final int index;
   @HiveField(1)
-  final List<HabitModel> habit;
+  final String? title;
   @HiveField(2)
+  final List<HabitModel> habit;
+  @HiveField(3)
   final int? lastHabitIndex;
 
   CategoryModel.init():
+      index = -1,
       title = "저장하지 않은 카테고리",
       habit = [HabitModel.init()],
       lastHabitIndex = null;
