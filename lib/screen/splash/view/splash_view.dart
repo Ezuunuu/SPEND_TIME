@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 ///-
 import 'package:spend_time/config/config.dart';
+import 'package:spend_time/screen/list/list.dart';
 import 'package:spend_time/screen/setting/setting.dart';
 
 
@@ -33,6 +34,7 @@ class _SplashViewState extends State<SplashView> {
 
     timer = Timer(const Duration(seconds: 2), () async {
       await context.read<SettingCubit>().settingInitial();
+      await context.read<ListCubit>().init();
     });
 
     return Scaffold(

@@ -14,8 +14,7 @@ class ListRepository {
   }
 
   Future<List<CategoryModel>> load() async {
-    final l = List<CategoryModel>.from(await _databaseRepository.get(name: LIST_KEY, defaultValue: List<CategoryModel>.empty(growable: true)));
-    return l;
+    return List<CategoryModel>.from(await _databaseRepository.get(name: LIST_KEY, defaultValue: [CategoryModel.init()]));
   }
 }
 

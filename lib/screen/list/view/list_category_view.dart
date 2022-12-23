@@ -5,10 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 ///-
 import 'package:spend_time/config/config.dart';
+import 'package:spend_time/screen/stopwatch/stopwatch.dart';
 import 'package:spend_time/widgets/widgets.dart';
 import 'package:spend_time/screen/list/list.dart';
 import 'package:spend_time/screen/setting/setting.dart';
-import 'package:spend_time/screen/stopwatch/stopwatch.dart';
 
 class ListCategoryView extends StatefulWidget {
   const ListCategoryView(
@@ -94,7 +94,7 @@ class _ListCategoryViewState extends State<ListCategoryView> with TickerProvider
                   return const Color(0xFF3F8FEA);
                 }),
               ),
-              onPressed: () => widget.select(widget.category.index),
+              onPressed: () => widget.select(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -38,6 +38,7 @@ class _StopwatchSettingButtonState extends State<StopwatchSettingButton> with Ti
 
   @override
   void dispose() {
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -79,7 +80,7 @@ class _StopwatchSettingButtonState extends State<StopwatchSettingButton> with Ti
                         context: context, builder: (context) {
                       return StopwatchSettingModal(
                         layout: widget.layout,
-                        duration: state.habit?.presetTime,
+                        duration: state.category.habit[state.habit ?? 0].presetTime,
                         settingFunction: (duration, index) async => await context.read<StopwatchCubit>().stopwatchModalSetting(duration, index),
                       );
                     }

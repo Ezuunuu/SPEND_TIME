@@ -17,9 +17,9 @@ class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CategoryModel(
-      index: fields[0] as int?,
-      title: fields[1] as String?,
-      habit: (fields[2] as List).cast<HabitModel>(),
+      title: fields[0] as String?,
+      habit: (fields[1] as List).cast<HabitModel>(),
+      lastHabitIndex: fields[2] as int?,
     );
   }
 
@@ -28,11 +28,11 @@ class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
     writer
       ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.index)
-      ..writeByte(1)
       ..write(obj.title)
+      ..writeByte(1)
+      ..write(obj.habit)
       ..writeByte(2)
-      ..write(obj.habit);
+      ..write(obj.lastHabitIndex);
   }
 
   @override

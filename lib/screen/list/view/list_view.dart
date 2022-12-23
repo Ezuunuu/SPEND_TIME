@@ -162,11 +162,16 @@ class ListView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: state.category.length,
                         itemBuilder: (BuildContext context, int index) {
+                          logger.d(state.category[index].title);
+                          logger.d(state.category[index].habit.length);
+                          logger.d(state.category[index].habit[0].stopwatch.length);
+                          logger.d(state.category[index].habit[0].stopwatch[0].time.startTime);
+                          if(state.category[index].title == "저장하지 않은 카테고리" && state.category[index].habit.length == 1 && state.category[index].habit[0].stopwatch.length == 1 && state.category[index].habit[0].stopwatch[0].time.startTime == 0) return const SizedBox();
                           return ListCategoryView(
                               category: state.category[index],
                               layout: layout,
-                              isSelected: state.selectIndex == (index + 1),
-                              select: (int index) => context.read<ListCubit>().select(index),
+                              isSelected: state.selectIndex == index,
+                              select: () => context.read<ListCubit>().select(index),
                           );
                         },
                       )

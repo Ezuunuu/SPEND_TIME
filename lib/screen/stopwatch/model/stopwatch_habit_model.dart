@@ -43,11 +43,11 @@ class HabitModel {
 
   HabitModel.init():
         mode = 0,
-        title = '',
+        title = '제목 없음',
         icon = 'assets/images/stopwatch_sticker_default_icon.svg',
         sound = 0,
         presetTime = Duration.zero,
-        stopwatch = List.empty(growable: true);
+        stopwatch = [StopwatchModel.init()];
 
   get todayUseTime {
     int useTime = 0;

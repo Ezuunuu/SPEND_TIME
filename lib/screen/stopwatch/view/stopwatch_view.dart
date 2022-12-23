@@ -108,8 +108,8 @@ class StopwatchView extends StatelessWidget {
                             context: context, builder: (context) {
                               return StopwatchMakeHabitModal(
                                 layout: layout,
-                                duration: state.habit?.presetTime,
-                                initialTitle: state.habit?.title,
+                                duration: state.category.habit[state.habit ?? 0].presetTime,
+                                initialTitle: state.category.habit[state.habit ?? 0].title,
                                 setTitle: (title) => context.read<StopwatchCubit>().setTitle(title),
                                 settingFunction: (duration, alarm) => context.read<StopwatchCubit>().stopwatchModalSetting(duration, alarm),
                               );
@@ -141,8 +141,8 @@ class StopwatchView extends StatelessWidget {
                           context: context, builder: (context) {
                         return StopwatchMakeHabitModal(
                           layout: layout,
-                          duration: state.habit?.presetTime,
-                          initialTitle: state.habit?.title,
+                          duration: state.category.habit[state.habit ?? 0].presetTime,
+                          initialTitle: state.category.habit[state.habit ?? 0].title,
                           setTitle: (title) => context.read<StopwatchCubit>().setTitle(title),
                           settingFunction: (duration, index) => context.read<StopwatchCubit>().stopwatchModalSetting(duration, index),
                         );
@@ -150,7 +150,7 @@ class StopwatchView extends StatelessWidget {
                       );
                     }
                   },
-                  child: Text((state.habit?.title ?? '습관을 입력해 보세요') == '' ? '습관을 입력해 보세요' : state.habit!.title,
+                  child: Text((state.category.habit[state.habit ?? 0].title) == '제목 없음' ? '습관을 입력해 보세요' : state.category.habit[state.habit ?? 0].title,
                     style: TextStyle(
                       fontFamily: 'SUIT',
                       fontWeight: FontWeight.w500,
@@ -162,7 +162,7 @@ class StopwatchView extends StatelessWidget {
                 SizedBox(
                   height: 20.0 * layout.heightPercent,
                 ),
-                Text(getStringFromDuration(state.status == StopwatchStatus.running ? state.habit?.stopwatch.last.time.currentTime ?? Duration.zero : state.habit?.presetTime ?? Duration.zero, SecMinMode.values[context.read<SettingCubit>().state.setting.secMinMode]),
+                Text(getStringFromDuration(state.currentTime, SecMinMode.values[context.read<SettingCubit>().state.setting.secMinMode]),
                   style: TextStyle(
                     fontFamily: 'SUIT',
                     fontWeight: FontWeight.w500,
@@ -206,12 +206,12 @@ class StopwatchView extends StatelessWidget {
                           iconSize: 42.0 * layout.heightPercent,
                           isPlay: state.status!.isRunning,
                           onClicked: () async {
-                            if((state.habit?.presetTime ?? Duration.zero).inMilliseconds > 1000 && state.habit?.mode == StopwatchMode.timer.index && state.status != StopwatchStatus
+                            if((state.category.habit[state.habit ?? 0].presetTime ?? Duration.zero).inMilliseconds > 1000 && state.category.habit[state.habit ?? 0].mode == StopwatchMode.timer.index && state.status != StopwatchStatus
                                 .init) {
                               stopwatchWarningAlertDialog(context, layout);
                             }else {
                               if(state.status == StopwatchStatus.running || state.status == StopwatchStatus.pause) {
-                                stopwatchCompleteDialog(context, layout, SvgPicture.asset(state.habit!.icon ?? 'assets/images/stopwatch_sticker_default_icon.svg'));
+                                stopwatchCompleteDialog(context, layout, SvgPicture.asset(state.category.habit[state.habit ?? 0].icon ?? 'assets/images/stopwatch_sticker_default_icon.svg'));
                               }else {
                                 await context.read<StopwatchCubit>().start();
                               }

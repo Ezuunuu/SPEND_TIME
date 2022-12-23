@@ -10,10 +10,8 @@ class ListCubit extends Cubit<ListState> {
   ListCubit(
       {
         required this.listRepository,
-        required this.habitRepository,
       }) : super(ListState(status: ListStatus.init, category: List.empty(growable: true))) { init(); }
   final ListRepository listRepository;
-  final HabitRepository habitRepository;
 
   Future<void> init() async {
     await listRepository.init();
@@ -35,7 +33,7 @@ class ListCubit extends Cubit<ListState> {
         return;
       }
     }
-    final CategoryModel category = CategoryModel(index: state.category.length + 1, title: state.currentCategoryName, habit: List.empty(growable: true));
+    final CategoryModel category = CategoryModel(title: state.currentCategoryName, habit: List.empty(growable: true));
     final list = state.category;
     list.add(category);
     await listRepository.save(list);

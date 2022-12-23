@@ -40,13 +40,11 @@ Future<void> main() async {
   // repository set
   final ListRepository listRepository = ListRepository();
   final StopwatchRepository stopwatchRepository = StopwatchRepository();
-  final HabitRepository habitRepository = HabitRepository();
 
   runApp(
       Application(
         listRepository: listRepository,
         stopwatchRepository: stopwatchRepository,
-        habitRepository: habitRepository,
       )
   );
 }

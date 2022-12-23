@@ -1,6 +1,7 @@
 import 'dart:async';
 ///-
 import 'package:spend_time/database/database.dart';
+import 'package:spend_time/screen/list/list.dart';
 import 'package:spend_time/screen/stopwatch/stopwatch.dart';
 
 class StopwatchRepository {
@@ -37,21 +38,21 @@ class StopwatchRepository {
     return await _databaseRepository.isEmpty();
   }
 
-  Future<void> save({required HabitModel habit}) async {
-    await _databaseRepository.put(key: STOPWATCH_KEY, value: habit);
+  Future<void> save({required CategoryModel category}) async {
+    await _databaseRepository.put(key: STOPWATCH_KEY, value: category);
   }
 
-  Future<HabitModel> load() async {
-    return await _databaseRepository.get(name: STOPWATCH_KEY, defaultValue: HabitModel.init());
+  Future<CategoryModel> load() async {
+    return await _databaseRepository.get(name: STOPWATCH_KEY, defaultValue: CategoryModel.init());
   }
 
   Future<void> saveDelete() async {
     await _databaseRepository.deleteAll();
   }
 
-  Future<void> deleteAndSave({required HabitModel habit}) async {
+  Future<void> deleteAndSave({required CategoryModel category}) async {
     await saveDelete();
-    await save(habit: habit);
+    await save(category: category);
   }
 
   Future<void> dispose() async {

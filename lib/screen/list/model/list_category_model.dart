@@ -6,14 +6,24 @@ part 'list_category_model.g.dart';
 
 @HiveType(typeId: 7)
 class CategoryModel {
-  CategoryModel({this.index, this.title, required this.habit});
-
+  CategoryModel({this.title, required this.habit, this.lastHabitIndex});
   @HiveField(0)
-  final int? index;
-  @HiveField(1)
   final String? title;
-
-  @HiveField(2)
+  @HiveField(1)
   final List<HabitModel> habit;
+  @HiveField(2)
+  final int? lastHabitIndex;
 
+  CategoryModel.init():
+      title = "저장하지 않은 카테고리",
+      habit = [HabitModel.init()],
+      lastHabitIndex = null;
+
+  CategoryModel copyWith({String? title, List<HabitModel>? habit, int? lastHabitIndex}) {
+    return CategoryModel(
+        title: title ?? this.title,
+        habit: habit ?? this.habit,
+        lastHabitIndex: lastHabitIndex ?? this.lastHabitIndex
+    );
+  }
 }

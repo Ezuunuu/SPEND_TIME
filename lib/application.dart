@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 ///-
 import 'package:spend_time/config/config.dart';
-import 'package:spend_time/database/database.dart';
 import 'package:spend_time/screen/home/home.dart';
 import 'package:spend_time/screen/list/list.dart';
 import 'package:spend_time/animation/animation.dart';
@@ -19,7 +18,6 @@ class Application extends StatelessWidget {
         Key? key,
         required this.stopwatchRepository,
         required this.listRepository,
-        required this.habitRepository,
       }) : super(key: key);
 
   final _navigatorKey = GlobalKey<NavigatorState>();
@@ -27,7 +25,6 @@ class Application extends StatelessWidget {
 
   final ListRepository listRepository;
   final StopwatchRepository stopwatchRepository;
-  final HabitRepository habitRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +38,8 @@ class Application extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => HomeCubit()),
-          BlocProvider(create: (_) => ListCubit(listRepository: listRepository, habitRepository: habitRepository)),
-          BlocProvider(create: (_) => StopwatchCubit(stopwatchRepository: stopwatchRepository, habitRepository: habitRepository)),
+          BlocProvider(create: (_) => ListCubit(listRepository: listRepository)),
+          BlocProvider(create: (_) => StopwatchCubit(stopwatchRepository: stopwatchRepository, listRepository: listRepository)),
           BlocProvider(create: (_) => SettingCubit()),
         ],
         child: MaterialApp(
