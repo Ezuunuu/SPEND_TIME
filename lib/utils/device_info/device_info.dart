@@ -5,7 +5,6 @@ import 'package:device_info_plus/device_info_plus.dart';
 class DeviceInfo {
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   dynamic info;
-  // pin pwd open
 
   Future<void> getDeviceInfo() async {
     if(Platform.isAndroid) {

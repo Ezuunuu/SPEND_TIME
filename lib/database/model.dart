@@ -74,26 +74,6 @@ const pauseTbl = SqfEntityTable(
     ]
 );
 
-const settingTbl = SqfEntityTable(
-    tableName: 'setting_tbl',
-    primaryKeyName: 'id',
-    primaryKeyType: PrimaryKeyType.integer_unique,
-    fields: [
-        SqfEntityField(
-            'darkMode',
-            DbType.bool,
-        ),
-        SqfEntityField(
-            'opening',
-            DbType.bool,
-        ),
-        SqfEntityField(
-            'timeMode',
-            DbType.integer,
-        )
-    ]
-);
-
 const stopwatchTbl = SqfEntityTable(
     tableName: 'stopwatch_tbl',
     primaryKeyName: 'id',
@@ -129,7 +109,6 @@ const db = SqfEntityModel(
         categoryTbl,
         habitTbl,
         pauseTbl,
-        settingTbl,
         stopwatchTbl
     ],
     sequences: [seqIdentity],

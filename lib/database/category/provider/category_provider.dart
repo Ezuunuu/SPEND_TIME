@@ -8,14 +8,23 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
   }
 
   @override
-  Future<CategoryModel> convertToInstance(Category_tbl dbModel) async {
-    return CategoryModel(id: dbModel.id ?? -1, title: dbModel.title, sort: dbModel.sort);
+  Future<List<Category_tbl>?> convertToDbModelList(List<CategoryModel> instanceList) async {
+    if(instanceList.isEmpty) return null;
+    final list = List<Category_tbl>.empty(growable: true);
+    for(var s in instanceList) {
+      final m = Category_tbl(
+          id: s.id,
+          title: s.title,
+          sort: s.sort
+      );
+      list.add(m);
+    }
+    return list;
   }
 
   @override
-  Future<List<Category_tbl>?> convertToDbModelList(List<CategoryModel> instanceList) async {
-    // TODO: implement convertToDbModelList
-    throw UnimplementedError();
+  Future<CategoryModel> convertToInstance(Category_tbl dbModel) async {
+    return CategoryModel(id: dbModel.id ?? -1, title: dbModel.title, sort: dbModel.sort);
   }
 
   @override
@@ -41,8 +50,7 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
         .equals(id)
         .delete();
     if(!res.success) {
-      /// TODO: Show errorMessage
-      throw Exception('Can not delete category: ERROR');
+      throw DeleteFailed();
     }
   }
 
@@ -54,8 +62,7 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
         .greaterThanOrEquals(0)
         .delete();
     if(!res.success) {
-      /// TODO: Show errorMessage
-      throw Exception('Can not delete all category: ERROR');
+      throw DeleteAllFailed();
     }
   }
 
@@ -67,7 +74,7 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
 
   @override
   Future<void> insertList(List<CategoryModel> instanceList) async {
-    await Future.forEach(instanceList!, (element) async => await insert(element)).catchError((e) {
+    await Future.forEach(instanceList, (element) async => await insert(element)).catchError((e) {
       throw InsertListFailed();
     });
   }
@@ -78,8 +85,7 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
       final dbModel = await Category_tbl().getById(id);
       return await convertToInstance(dbModel!);
     }catch(e) {
-      /// TODO: Show errorMessage
-      throw Exception('Can not load category: ERROR');
+      throw SelectFailed();
     }
   }
 
@@ -89,8 +95,7 @@ class CategoryProvider implements AbstractDatabaseProvider<CategoryModel, Catego
       final dbModel = await Category_tbl().select().toList();
       return await convertToInstanceList(dbModel) ?? List.empty();
     }catch(e) {
-      /// TODO: Show errorMessage
-      throw Exception('Can not load category: ERROR');
+      throw SelectAllFailed();
     }
   }
 
