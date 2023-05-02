@@ -34,4 +34,12 @@ class SettingModel {
     );
   }
 
+  factory SettingModel.init() {
+    return SettingModel(
+      darkMode: false,
+      opening: true,
+      timeMode: TimeMode.second,
+    );
+  }
+
 }

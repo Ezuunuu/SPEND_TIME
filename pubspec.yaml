@@ -10,23 +10,45 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Config
-  logger: ^1.3.0
-
   # Bloc
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
 
+  # Config
+  logger: ^1.3.0
+
+  # DB
+  sqflite: ^2.2.6
+  sqfentity: ^2.3.0+5
+  sqfentity_gen: ^2.3.0+4
+  shared_preferences: ^2.1.0
+
+  # Design
+  lottie: ^2.3.2
+  carousel_slider: ^4.2.1
+
+  # Localization
+  easy_localization: ^3.0.1
+
+  # Util
+  http: ^0.13.5
+  device_info_plus: ^8.2.0
+  package_info_plus: ^3.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
 
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/images
+    - assets/images/
+    - assets/lottie/
+    - assets/translations/
 
   fonts:
     - family: NotoSans
