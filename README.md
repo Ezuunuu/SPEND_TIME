@@ -8,4 +8,4 @@ Github: https://github.com/Ezuunuu
 
 Velog: https://velog.io/@ezuunuu
 
-notion: https://chipped-akubra-cb1.notion.site/Spend-Time-9dd8bef657254ef28d7bfcc930bfe713
+notion: https://chipped-akubra-cb1.notion.site/c89b5810745741a894acb943ec6a5b5f
