@@ -50,9 +50,68 @@ final lightTheme = ThemeData(
       onSurface: Colors.black.withOpacity(0.6),
     ),
     textTheme: const TextTheme(
-      displayLarge: TextStyle(),
-      displayMedium: TextStyle(),
-      displaySmall: TextStyle(),
+      displayLarge: TextStyle(
+        fontFamily: 'SUIT',
+        fontWeight: FontWeight.w500,
+        fontSize: 44,
+      ),
+      displayMedium: TextStyle(
+        fontFamily: 'SUIT',
+        fontWeight: FontWeight.w800,
+        fontSize: 26,
+      ),
+      displaySmall: TextStyle(
+        fontFamily: 'SUIT',
+        fontWeight: FontWeight.w800,
+        fontSize: 22,
+      ),
+      bodyLarge: TextStyle(
+        fontFamily: 'SUIT',
+        fontWeight: FontWeight.w700,
+        fontSize: 20,
+        letterSpacing: -0.02
+      ),
+      bodyMedium: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w700,
+          fontSize: 18,
+          letterSpacing: -0.015
+      ),
+      titleLarge: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w500,
+          fontSize: 18,
+          letterSpacing: -0.015
+      ),
+      titleMedium: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
+          letterSpacing: -0.02
+      ),
+      titleSmall: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w700,
+          fontSize: 14,
+          letterSpacing: -0.03
+      ),
+      labelLarge: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+          letterSpacing: -0.03
+      ),
+      labelMedium: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w400,
+          fontSize: 12,
+          letterSpacing: -0.025
+      ),
+      labelSmall: TextStyle(
+          fontFamily: 'SUIT',
+          fontWeight: FontWeight.w400,
+          fontSize: 10,
+      ),
     )
 );
 

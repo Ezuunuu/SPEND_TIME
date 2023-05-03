@@ -13,26 +13,39 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: _navigatorKey,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      onGenerateRoute: (_) => AnimatedPageMove(const SplashView()).fadeIn(),
-      builder: (context, child) {
-        return BlocListener<SettingCubit, SettingState>(
-          listenWhen: (previous, current) => previous.setting != current.setting,
-          listener: (context, state) async {
-            if(state.setting?.opening ?? true) {
-              await _navigator!.pushReplacement(AnimatedPageMove(const OpeningView()).fadeIn());
-            }else {
-              logger.d('${state.setting?.opening}');
-              await _navigator!.pushReplacement(AnimatedPageMove(const HomeView()).fadeIn());
-            }
-          },
-          child: child,
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => WalkThroughCubit()),
+        BlocProvider(create: (_) => CalculateCubit(repository: CalculateRepository())),
+        BlocProvider(create: (_) => HabitListCubit(repository: HabitListRepository())),
+        BlocProvider(create: (_) => RecordListCubit(repository: RecordListRepository())),
+        BlocProvider(create: (_) => StopwatchCubit(repository: StopwatchRepository())),
+      ],
+      child: MaterialApp(
+        theme: lightTheme,
+        navigatorKey: _navigatorKey,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        onGenerateRoute: (_) => AnimatedPageMove(const SplashView()).fadeIn(),
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: BlocListener<SettingCubit, SettingState>(
+              listenWhen: (previous, current) => previous.setting != current.setting,
+              listener: (context, state) async {
+                if(state.setting?.opening ?? true) {
+                  await _navigator!.pushReplacement(AnimatedPageMove(const OpeningView()).fadeIn());
+                }else {
+                  logger.d('${state.setting?.opening}');
+                  await _navigator!.pushReplacement(AnimatedPageMove(const HomeView()).fadeIn());
+                }
+              },
+              child: child,
+            ),
+          );
+        },
+      ),
     );
   }
 }

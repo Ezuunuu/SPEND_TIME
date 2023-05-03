@@ -7,16 +7,17 @@ class Layout {
   final standardHeight = 640;
   /// DO NOT EDIT THIS!
 
-  final MediaQueryData mediaQueryData;
+  final BuildContext context;
   var appBarSize = 0.0;
 
-  Layout(this.mediaQueryData);
+  Layout(this.context);
 
-  get fullWidth => mediaQueryData.size.width;
-  get fullHeight => mediaQueryData.size.height;
-  get fullLayoutHeight => mediaQueryData.size.height - appBarSize;
+  get fullWidth => MediaQuery.of(context).size.width;
+  get fullHeight => MediaQuery.of(context).size.height;
+  get fullLayoutHeight => MediaQuery.of(context).size.height - appBarSize;
 
   get widthPercent => fullWidth / standardWidth;
   get heightPercent => fullHeight / standardHeight;
-  get fontPercent => fullWidth / standardWidth;
+
+  get fontSize => fullWidth / standardWidth;
 }

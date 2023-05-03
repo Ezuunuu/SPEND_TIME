@@ -8,5 +8,4 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> changeIndex({required int index}) async {
     emit(state.copyWith(index: index));
   }
-
 }

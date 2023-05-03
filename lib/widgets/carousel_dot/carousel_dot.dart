@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spend_time/config/config.dart';
 
 class CarouselDot extends StatefulWidget {
   const CarouselDot(
@@ -24,13 +25,21 @@ class CarouselDot extends StatefulWidget {
 }
 
 class _CarouselDotState extends State<CarouselDot> with TickerProviderStateMixin {
+  late AnimationController animationController;
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(widget.count, (index) {
-          final AnimationController animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
+          animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
           final Animation<double> animation = CurvedAnimation(
             parent: animationController,
             curve: Curves.fastOutSlowIn,
@@ -38,8 +47,6 @@ class _CarouselDotState extends State<CarouselDot> with TickerProviderStateMixin
           Tween<double> tween = Tween(begin: 0.8, end: 1);
           if (index == widget.index) {
             animationController.forward();
-          } else {
-            // _animationController.reverse();
           }
           return Padding(
             padding: const EdgeInsets.only(left: 4.0),

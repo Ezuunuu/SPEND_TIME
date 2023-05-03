@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spend_time/config/config.dart';
 import 'package:spend_time/screen/screen.dart';
@@ -10,7 +11,7 @@ class OpeningView extends AbstractScreen {
 
   @override
   Widget build(BuildContext context) {
-    final layout = Layout(MediaQuery.of(context));
+    final layout = Layout(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFFEEF0F6),
@@ -22,24 +23,14 @@ class OpeningView extends AbstractScreen {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Lottie.asset('assets/lottie/opening_lottie.json', width: 236.0 * layout.widthPercent, fit: BoxFit.fill, repeat: true),
-              const Text(
+              Text(
                 "opening_headline",
-                style: TextStyle(
-                  fontFamily: 'SUIT',
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF000000),
-                  fontSize: 22,
-                ),
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(color: const Color(0xFF000000)),
               ).tr(),
               SizedBox(height: 16.0 * layout.heightPercent),
-              const Text(
+              Text(
                 "opening_sub",
-                style: TextStyle(
-                  fontFamily: 'SUIT',
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF496D97),
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(color: const Color(0xFF496D97))
               ).tr(),
               SizedBox(height: 91.0 * layout.heightPercent),
               SizedBox(
@@ -49,16 +40,13 @@ class OpeningView extends AbstractScreen {
                   padding: EdgeInsets.symmetric(horizontal: 16.0 * layout.widthPercent),
                   child: ElevatedButton(
                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFF1775E5))),
-                      onPressed: () => Navigator.push(context, AnimatedPageMove(const WalkThroughView()).fadeIn()),
-                      child: const Text(
-                        'opening_btn',
-                        style: TextStyle(
-                          fontFamily: 'SUIT',
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFFFFFFFF),
-                          fontSize: 18,
-                        ),
-                      ).tr()),
+                      onPressed: () async {
+                        await context.read<WalkThroughCubit>().setIndex(0);
+                        if (context.mounted) {
+                          Navigator.push(context, AnimatedPageMove(const WalkThroughView()).fadeIn());
+                        }
+                      },
+                      child: Text('opening_btn', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: const Color(0xFFFFFFFF))).tr()),
                 ),
               ),
               SizedBox(height: 80.0 * layout.heightPercent),

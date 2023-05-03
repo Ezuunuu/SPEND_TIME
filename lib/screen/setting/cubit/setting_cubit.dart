@@ -13,4 +13,16 @@ class SettingCubit extends Cubit<SettingState> {
     final setting = await repository.init();
     emit(state.copyWith(setting: setting));
   }
+
+  Future<void> setMode(TimeMode timeMode) async {
+    final setting = repository.setting;
+    setting?.copyWith(timeMode: timeMode);
+    emit(state.copyWith(setting: setting));
+  }
+
+  Future<void> disableOpening() async {
+    final setting = repository.setting;
+    setting?.copyWith(opening: false);
+    emit(state.copyWith(setting: setting));
+  }
 }

@@ -6,7 +6,7 @@ class DevelopExampleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final layout = Layout(MediaQuery.of(context));
+    final layout = Layout(context);
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
@@ -14,44 +14,46 @@ class DevelopExampleView extends StatelessWidget {
             children: [
               SizedBox(width: 200.0 * layout.widthPercent, height: 100.0 * layout.heightPercent,),
               SizedBox(width: 100.0 * layout.widthPercent, height: 200.0 * layout.heightPercent,),
-              Text('ABCDEFG 가나다라마바사 12345 - 800',
-                  style: TextStyle(
-                    fontFamily: 'SUIT',
-                    fontWeight: FontWeight.w800,
-                    color: Colors.black,
-                    fontSize: 22.0 * layout.fontPercent,
-                  ),
-                  textAlign: TextAlign.center),
-              Text('ABCDEFG 가나다라마바사 12345 - 700',
-                  style: TextStyle(
-                    fontFamily: 'SUIT',
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black,
-                    fontSize: 22.0 * layout.fontPercent,
-                  ),
-                  textAlign: TextAlign.center),
-              Text('ABCDEFG 가나다라마바사 12345 - 500',
-                  style: TextStyle(
-                    fontFamily: 'SUIT',
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                    fontSize: 22.0 * layout.fontPercent,
-                  ),
-                  textAlign: TextAlign.center),
-              Text('ABCDEFG 가나다라마바사 12345 - 400',
-                  style: TextStyle(
-                    fontFamily: 'SUIT',
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black,
-                    fontSize: 22.0 * layout.fontPercent,
-                  ),
-                  textAlign: TextAlign.center),
-              Text('ABCDEFG 가나다라마바사 12345 - 기본',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22.0 * layout.fontPercent,
-                  ),
-                  textAlign: TextAlign.center),
+              Text('ABCDEFG 가나다라마바사 12345 - displayLarge',
+                  style: Theme.of(context).textTheme.displayLarge,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - displayMedium',
+                  style: Theme.of(context).textTheme.displayMedium,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - displaySmall',
+                  style: Theme.of(context).textTheme.displaySmall,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - bodyLarge',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - bodyMedium',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - titleLarge',
+                  style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - titleMedium',
+                  style: Theme.of(context).textTheme.titleMedium,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - labelLarge',
+                  style: Theme.of(context).textTheme.labelLarge,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - labelMedium',
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center
+              ),
+              Text('ABCDEFG 가나다라마바사 12345 - labelSmall',
+                  style: Theme.of(context).textTheme.labelSmall,
+                  textAlign: TextAlign.center
+              ),
             ],
           ),
         ),

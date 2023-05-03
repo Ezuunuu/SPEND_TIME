@@ -25,6 +25,7 @@ dependencies:
 
   # Design
   lottie: ^2.3.2
+  flutter_svg: ^2.0.5
   carousel_slider: ^4.2.1
 
   # Localization
@@ -51,12 +52,13 @@ flutter:
     - assets/translations/
 
   fonts:
-    - family: NotoSans
+    - family: SUIT
       fonts:
-        - asset: assets/fonts/NotoSansKR-Regular.otf
-        - asset: assets/fonts/NotoSansKR-Medium.otf
-    - family: Roboto
-      fonts:
-        - asset: assets/fonts/Roboto-Light.ttf
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/SUIT-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/SUIT-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/SUIT-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SUIT-Regular.ttf
+          weight: 400

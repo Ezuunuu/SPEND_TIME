@@ -1,0 +1,41 @@
+{
+  "title": "SpendTime",
+
+  "opening_headline": "시간을 담으러 가볼까요?",
+  "opening_sub": "습관을 시간으로 기록해요",
+  "opening_btn": "지금 담으러 가기",
+
+  "walk_through_headline_1": "할일 시작 하기 전에\n스톱워치 부터",
+  "walk_through_sub_1": "재생 버튼을 눌러서 스톱워치를 실행시키세요",
+  "walk_through_headline_2": "일이 끝나면\n정지 버튼을 탭",
+  "walk_through_sub_2": "정지 버튼을 눌러서 시간을 기록하세요",
+  "walk_through_headline_3": "나의 기록에서\n시간을 확인",
+  "walk_through_sub_3": "나의 기록 페이지에서 사용한 시간을 볼 수 있어요",
+  "walk_through_headline_4": "초 모드와 분 모드\n두가지 선택지가 있어요",
+  "walk_through_sub_4": "\uD83D\uDE04걱정마세요. 나중에 다시 설정할 수 있어요.",
+  "walk_through_minute": "분 모드",
+  "walk_through_second": "초 모드",
+  "walk_through_btn_minute": "분까지 계산할래",
+  "walk_through_btn_second": "초까지 계산할래",
+
+  "calculate_title": "시간 계산",
+  "calculate_usage": "사용 시간",
+  "calculate_average": "사용 시간",
+  "calculate_day_rate": "일간 사용률",
+  "calculate_week_rate": "주간 사용률",
+  "calculate_month_rate": "월간 사용률",
+  "calculate_long_time": "가장 오래한 습관",
+
+
+
+  "next": "다음",
+  "skip": "뛰어넘기",
+  "date": "{}년 {}월 {}일 {}요일",
+  "more": "더보기",
+  "entire": "전체",
+  "today": "오늘",
+  "week": "이번 주",
+  "month": "이번 달",
+  "average": "평균",
+  "total": "누적"
+}
